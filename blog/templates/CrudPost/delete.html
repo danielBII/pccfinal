@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+
+<div class="uk-container uk-container-small">
+    <h1 class="uk-text-center uk-text-danger">Deseja deletar?</h1>
+    <form class="uk-grid-medium" uk-grid method="post"> 
+        {% csrf_token %}
+        <div class="uk-width-1-1s">
+            <label class="uk-form-label" for="form-horizontal-text">Título</label>
+            <h5 class="uk-text-danger">{{form.title.value}}</h5>
+        </div>
+        <div class="uk-width-1-1@s">
+            <label class="uk-form-label" for="form-horizontal-text">Conteúdo</label>
+            <h5 class="uk-text-danger">{{form.text.value}}</h5>
+        </div>
+
+        <div class="uk-width-1-1@s">
+            <button class="uk-button uk-flex-center uk-button-danger uk-width-1-1 uk-margin-small-bottom"
+                type="submit">Deletar</button>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

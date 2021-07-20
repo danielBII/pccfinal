@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+{% load classes %}
+{% block content %}
+<div class="uk-section uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport>
+    <div class="uk-width-1-1">
+        <div class="uk-container">
+            <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
+                {% if form.errors %}
+                <div id="errors">
+                    <div class="inner">
+                        <p>There were some errors in the information you entered. Please correct the following:</p>
+                        <ul>
+                            {% for field in form.errors %}
+                                {% if field.errors %}
+                                    <li>{{ field.label}}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="uk-width-1-1@m">
+                    <div
+                        class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+                        <h3 class="uk-card-title uk-text-center">Bem Vindo</h3>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="uk-margin">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                    {{ form.username }}
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                    {{ form.password }}
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <button type="submit"
+                                    class="uk-button uk-button-primary uk-button-large uk-width-1-1">Login</button>
+                            </div>
+                            <div class="uk-text-small uk-text-center">
+                                <p>
+                                    Não tem conta? <a href="{% url 'accounts:createaccount' %}">Cadastro</a>
+                                </p>
+                                <p>
+                                    Esqueceu Senha? <a href="{% url 'accounts:recoverypass' %}">Esqueci Senha</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

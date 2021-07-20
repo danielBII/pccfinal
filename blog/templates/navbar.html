@@ -1,0 +1,54 @@
+{% load static %}
+<style>
+    i.fas,
+    i.fab {
+        color: #1d9e53e1 !important;
+    }
+</style>
+<nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+            <li class="uk-active">
+                <a href="/">
+                    <img src="{% static 'logo.png' %}" width="150" height="150" alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="uk-navbar-right">
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+            </a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <div class="uk-width-1-2@s uk-width-2-5@m">
+                        <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                            <li class="uk-parent">
+                                <a href="#"><i class="fas fa-graduation-cap"></i>Cursos</a>
+
+                                <ul class="uk-nav-sub">
+                                    <li><a href="/courses/informatica"><i class="fas fa-code"></i>Informática</a></li>
+                                    <li><a href="/courses/agroindustria"><i class="fas fa-cheese"></i>Agroindustria</a></li>
+                                    <li><a href="/courses/agropecuaria"><i class="fas fa-tractor"></i>Agropecuaria</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <li>
+                        <a href="{% url 'desenvolvedores' %}"><i class="fas fa-code"></i>Desenvolvedores</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-images"></i>Galeria</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-slack"></i>Blog</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-user-circle"></i>Conta</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

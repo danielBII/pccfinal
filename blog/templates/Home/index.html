@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+{% include 'navbar.html' %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/home/index.css' %}">
+</head>
+<div class="uk-light uk-margin-top-4 " id="hero">
+    <h1 class="uk-text-center uk-text-middle">IFBAIANO GUANAMBI</h1>
+</div>
+<br/>
+<div class="uk-container-background" id="container-home">
+    <div class="uk-container uk-container-medium">
+        <div class="uk-child-width-1-4@m" uk-grid>
+            {% for post in posts %}
+            <div>
+                <div class="uk-card uk-card-default uk-text-center">
+                    <div class="uk-card-media-top ">
+                        <img src="{{post.img.url}}" />
+                    </div>
+                    <div class=" uk-card-body">
+                        <h3 class="uk-card-title">
+                            <a href="{% url 'blog:postunique' slug=post.slug %}">
+                                {{post.title | safe}}
+                            </a>
+                        </h3>
+                        <p>{{post.text | safe | truncatechars:105}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script async>
+        function search() {
+            const value = document.getElementById('form-horizontal-text').value
+            const cardsBody = Array.from(document.getElementsByClassName('uk-card-title'))
+            const cards = Array.from(document.getElementsByClassName('uk-card'))
+            cardsBody.map((card, index) => {
+                const textRaw = value.search(card.children[0].textContent)
+                if (textRaw.includes(value)) {
+
+                }
+            })
+        }
+    </script>
+    {% endblock content %}

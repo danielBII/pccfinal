@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% load classes %}
+{% block content %}
+{% include 'navbar.html' %}    
+<style>
+    p{text-align: justify !important;}
+    img {margin-top: 7%;
+    text-align: center !important;
+    justify-content: center !important;}
+</style>
+<div class="uk-container uk-container-small uk-text-center">
+    <h1>{{course.title | safe}}</h1>
+    <article class="uk-article uk-text-center">
+
+        <p class="uk-text-lead uk-text-center">
+            {{course.text | safe}}
+        </p>
+    </article>
+</div>
+
+{% endblock %}

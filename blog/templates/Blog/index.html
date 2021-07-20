@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+
+{% block content %}
+{% load static %}
+{% include 'navbar.html' %}
+
+<style>
+    #title {
+        z-index: 100 !important;
+        color: #fff !important;
+    }
+
+    #hero-blog {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: center !important;
+        justify-content: center;
+        margin: 5 auto !important;
+    }
+</style>
+<div class="uk-cover-container uk-dark">
+    <div class="uk-margin-top-4 uk-height-medium uk-light uk-background-secondary" id="hero-blog">
+        <h1 class="uk-text-center uk-text-middle">{{post.title | safe}}</h1>
+    </div>
+</div>
+<div class="uk-container uk-container-small ">
+    <article class="uk-article">
+        <p class="uk-article">
+            Escrito por
+            {% if post.public %}
+            <a href="#">{{post.author | upper }}
+                {% else %}
+                <a href="#">Usuário Anônimo</a>
+                {% endif %}
+
+            </a> on {{post.created_date}}.
+        </p>
+        <p class="uk-text-lead">
+            {{post.text | safe}}
+        </p>
+    </article>
+</div>
+{% endblock content %}

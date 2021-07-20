@@ -1,0 +1,70 @@
+{% extends 'base.html'%}
+{% load classes %}
+{% block content %}
+{% include 'navbar.html' %}
+
+
+<div class="uk-section uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport>
+    <div class="uk-width-1-1">
+        <div class="uk-container">
+            <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
+                <div class="uk-width-1-1@m">
+                    <div
+                        class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+                        <h1 class="uk-text-center">Cadastro</h1>
+                        <form class="uk-grid-medium" uk-grid method="post">
+                            {% csrf_token %}
+                            <div class="uk-width-1-2@s">
+                                <label class="uk-form-label" for="form-horizontal-text">Username</label>
+                                {{ form.username}}
+                            </div>
+                            <div class="uk-width-1-2@s">
+                                <label class="uk-form-label" for="form-horizontal-text">Nome</label>
+                                {{ form.first_name}}
+                            </div>
+                            <div class="uk-width-1-2@s">
+                                <label class="uk-form-label" for="form-horizontal-text">Sobrenome</label>
+                                {{ form.last_name}}
+                            </div>
+                            <div class="uk-width-1-2@s">
+                                <label class="uk-form-label" for="form-horizontal-text">Senha</label>
+                                {{ form.password1| addClass:"uk-input"}}
+                            </div>
+                            <div class="uk-width-1-2@s">
+                                <label class="uk-form-label" for="form-horizontal-text">Confirmar Senha</label>
+                                {{ form.password2| addClass:"uk-input"}}
+
+                            </div>
+                            <div class="uk-width-1-2@s">
+                                <label class="uk-form-label" for="form-horizontal-text">Email</label>
+                                {{ form.email}}
+                            </div>
+                            {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                            <div class="uk-width-1-1@s">
+                                <button
+                                    class="uk-button uk-flex-center uk-button-primary uk-width-1-1 uk-margin-small-bottom"
+                                    type="submit">Enviar</button>
+                            
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
