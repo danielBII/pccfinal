@@ -14,7 +14,7 @@ def create_accont(request):
         form = PostForm(request.POST)
         if form.is_valid():
             form.save()
-            user = authenticate(username=form.username.value(), password=form.password.value())
+            user = authenticate(username=request.POST["username"], password=request.POST["password1"])
             login(request, user)
             return redirect('/')
         else:
@@ -33,8 +33,9 @@ def create_accont(request):
 
 @login_required
 def account_profile(request):
-    profile = request.user
-    print(profile.email)
+    id_ = request.user.id
+    profile = User.objects.get(pk=id_)
+    print(profile.first_name)
     return render(request, 'accounts/profile.html', {'profile':profile})
 
 
@@ -55,7 +56,7 @@ def account_profile_edit(request):
             }
             return render(request, 'accounts/form.html', context)
     else:
-        form = PostForm()
+        form = PostForm(instance=user)
         context = {
             'form': form
         }

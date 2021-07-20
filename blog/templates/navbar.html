@@ -39,14 +39,19 @@
                         <a href="{% url 'desenvolvedores' %}"><i class="fas fa-code"></i>Desenvolvedores</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fas fa-images"></i>Galeria</a>
+                        <a href="{% url 'galery:galery' %}"><i class="fas fa-images"></i>Galeria</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-slack"></i>Blog</a>
+                        <a href="{% url 'blog:postcreate' %}"> <i class="fas fa-plus"></i>Novo Post</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fas fa-user-circle"></i>Conta</a>
+                        <a href="{% url 'accounts:profile' %}"> <i class="fas fa-user-circle"></i>Conta</a>
                     </li>
+                    {% if request.user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'accounts:logout'  %}"> <i class="fas fa-user-circle"></i>Sair</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

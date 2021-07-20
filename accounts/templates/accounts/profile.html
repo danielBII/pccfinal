@@ -11,13 +11,13 @@
         <div>
             <div class="uk-card-body">
                 <h3 class="uk-card-title">Bem-Vindo Chefe</h3>
-                <p>Nome: {{profile.fist_name}}</p>
+                <p>Nome: {{profile.first_name}}</p>
                 <p>Email:{{profile.email}} </p>
                 <p>Redefinir Senha: </p>
             </div>
             <div class="uk-card-body">
 
-                <a href="{% url 'accounts:profile' %}">
+                <a href="{% url 'accounts:editaccount' %}">
                     <button class="uk-button">
                         Editar
                     </button>
