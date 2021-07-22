@@ -13,10 +13,9 @@
     <div class="uk-container uk-container-medium">
         <div class="uk-child-width-1-4@m" uk-grid>
             {% for post in posts %}
-            <div>
                 <div class="uk-card uk-card-default uk-text-center">
                     <div class="uk-card-media-top ">
-                        <img src="{{post.img.url}}" />
+                        <img height="200" width="150" src="{{post.img.url}}" /> 
                     </div>
                     <div class=" uk-card-body">
                         <h3 class="uk-card-title">
@@ -27,21 +26,8 @@
                         <p>{{post.text | safe | truncatechars:105}}</p>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>
-    <script async>
-        function search() {
-            const value = document.getElementById('form-horizontal-text').value
-            const cardsBody = Array.from(document.getElementsByClassName('uk-card-title'))
-            const cards = Array.from(document.getElementsByClassName('uk-card'))
-            cardsBody.map((card, index) => {
-                const textRaw = value.search(card.children[0].textContent)
-                if (textRaw.includes(value)) {
-
-                }
-            })
-        }
-    </script>
     {% endblock content %}
+</div>

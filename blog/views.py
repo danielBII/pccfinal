@@ -20,7 +20,7 @@ def home(request):
 
 @login_required
 def posts_edit(request, slug):
-    post = get_object_or_404(Post, pk=slug)
+    post = Post.objects.get(slug=slug)
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
@@ -28,7 +28,7 @@ def posts_edit(request, slug):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect("/")
     else:
         form = PostForm(instance=post)
     context = {

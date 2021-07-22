@@ -27,6 +27,10 @@
 <div class="uk-container uk-container-small ">
     <article class="uk-article">
         <p class="uk-article">
+            {% if post.author == request.user %}
+            <a class="uk-button uk-button-default" href="edit"></a>            
+            {% endif %}
+            
             Escrito por
             {% if post.public %}
             <a href="#">{{post.author | upper }}

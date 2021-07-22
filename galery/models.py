@@ -4,7 +4,6 @@ import uuid
 from django.conf import settings
 
 class Galery(models.Model):
-    id = models.UUIDField(default=uuid.uuid4(), primary_key=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='galery/')
     description = models.CharField(max_length=150, blank=True)
