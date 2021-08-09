@@ -113,3 +113,5 @@ USE_L10N = True
 USE_TZ = True
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
